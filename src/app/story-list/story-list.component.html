@@ -1,6 +1,12 @@
 <ul *ngIf="stories" class="stories">
   <li *ngFor="let story of stories" class="story">
-    <div class="title">{{ story.title }}</div>
-    <div class="author">{{ story.by }}</div>
+    <div routerLink="/story/{{story.id}}" class="story-link">
+      <div class="title">
+        <a href="{{story.url}}" class="story-url" (click)="$event.stopPropagation()">
+          {{ story.title }}
+        </a>
+      </div>
+      <div class="author">{{ story.by }}</div>
+    </div>
   </li>
 </ul>

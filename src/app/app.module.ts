@@ -7,12 +7,14 @@ import { DataService } from './data.service'
 import { AppComponent } from './app.component';
 import { StoryListComponent } from './story-list/story-list.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { StoryComponent } from './story/story.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    StoryListComponent
+    StoryListComponent,
+    StoryComponent
   ],
   imports: [
     BrowserModule,

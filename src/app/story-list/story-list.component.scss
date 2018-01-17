@@ -9,10 +9,22 @@ ul {
 
 .story {
   width: 100%;
-  padding-top: 5px;
-  padding-left: 15px;
-  padding-bottom: 30px;
   cursor: pointer;
+  padding-left: 15px;
+}
+
+.story-link {
+  padding-top: 5px;
+  padding-bottom: 30px;
+}
+
+.story-url:hover {
+  color: #ff6600 !important;
+}
+
+.story a {
+  color: #000;
+  text-decoration: none;
 }
 
 .title {

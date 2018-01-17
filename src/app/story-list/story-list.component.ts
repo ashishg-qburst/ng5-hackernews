@@ -11,6 +11,7 @@ export class StoryListComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   stories = [];
+  selectedStory;
 
   ngOnInit() {
     this.getStories();
@@ -24,4 +25,6 @@ export class StoryListComponent implements OnInit {
           .subscribe(items => this.stories = items);
     });
   }
+
+  selectStory(story) { this.selectedStory = story; }
 }
