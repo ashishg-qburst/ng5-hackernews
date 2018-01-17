@@ -1,3 +1,5 @@
-<p>
-  story-list works!
-</p>
+<ul *ngIf="stories" class="stories">
+  <li *ngFor="let story of stories" class="story">
+    <span class="title">{{ story.title }}</span>
+  </li>
+</ul>
