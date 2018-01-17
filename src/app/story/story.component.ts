@@ -20,6 +20,6 @@ export class StoryComponent implements OnInit {
 
   getStory() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.dataService.getItem(id).subscribe(item => this.story = item);
+    this.dataService.getItemWithDescendants(id).subscribe(item => this.story = item);
   }
 }

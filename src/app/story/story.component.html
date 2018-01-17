@@ -1,5 +1,14 @@
 <div *ngIf="story">
-  <div class="title">{{ story.title }}</div>
-  <div class="author">{{ story.by }}</div>
-  <div class="description" innerHTML="{{ story.text }}"></div>
+  <div>
+    <div class="title">{{ story.title }}</div>
+    <div class="author">{{ story.by }}</div>
+    <div class="description" innerHTML="{{ story.text }}"></div>
+  </div>
+
+  <div *ngIf="story.kids">
+    <div *ngFor="let comment of story.kids" class="comment" [class.has-kids]="comment.kids">
+      <div innerHTML="{{ comment.text }}" class="text"></div>
+      <div class="author">{{ comment.by }}</div>
+    </div>
+  </div>
 </div>
