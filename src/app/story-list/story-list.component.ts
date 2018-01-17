@@ -20,8 +20,8 @@ export class StoryListComponent implements OnInit {
     let topTen = [];
     this.dataService.getTopStories().subscribe(stories => {
       this.dataService
-            .getItems(stories)
-            .subscribe(items => this.stories = items);
+          .getItems(stories)
+          .subscribe(items => this.stories = items);
     });
   }
 }

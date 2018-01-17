@@ -1,5 +1,6 @@
 <ul *ngIf="stories" class="stories">
   <li *ngFor="let story of stories" class="story">
-    <span class="title">{{ story.title }}</span>
+    <div class="title">{{ story.title }}</div>
+    <div class="author">{{ story.by }}</div>
   </li>
 </ul>
