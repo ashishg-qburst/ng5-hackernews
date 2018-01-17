@@ -33,7 +33,7 @@ export class DataService {
   getItemWithDescendants(id) {
     return this.getItem(id).mergeMap(item => {
       return this.getItems(item.kids).map(kids => {
-        item.kids = kids;
+        item.children = kids;
         return item;
       });
     });

@@ -5,10 +5,9 @@
     <div class="description" innerHTML="{{ story.text }}"></div>
   </div>
 
-  <div *ngIf="story.kids">
-    <div *ngFor="let comment of story.kids" class="comment" [class.has-kids]="comment.kids">
-      <div innerHTML="{{ comment.text }}" class="text"></div>
-      <div class="author">{{ comment.by }}</div>
+  <div *ngIf="story.children">
+    <div *ngFor="let comment of story.children">
+      <app-comment [comment]="comment"></app-comment>
     </div>
   </div>
 </div>

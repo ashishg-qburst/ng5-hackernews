@@ -13,20 +13,3 @@
   font-size: 14px;
   font-weight: 700;
 }
-
-.comment {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-.comment.has-kids:hover {
-  background: #ddd;
-  border-left: 5px solid #ff6600;
-  padding-left: 10px;
-}
-
-.comment.has-kids {
-  cursor: pointer;
-}
