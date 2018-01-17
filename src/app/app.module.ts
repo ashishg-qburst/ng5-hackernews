@@ -6,6 +6,7 @@ import { DataService } from './data.service'
 
 import { AppComponent } from './app.component';
 import { StoryListComponent } from './story-list/story-list.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { StoryListComponent } from './story-list/story-list.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
