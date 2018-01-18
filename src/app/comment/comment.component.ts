@@ -10,35 +10,41 @@ import { DataService } from '../data.service';
 export class CommentComponent implements OnInit {
 
   @Input() comment;
+  currentClasses: {};
   hasKids: boolean = false;
   fetchedKids: boolean = false;
   closedComment: boolean = true;
 
-  currentClasses: {};
+  constructor(private dataService: DataService) { }
+
+  ngOnInit() {
+    this.hasKids = (this.comment.kids && this.comment.kids.length > 0) ? true : false;
+    this.closedComment = this.comment.closed == false ? false : true;
+    this.setCurrentClasses();
+  }
+
   setCurrentClasses() {
     this.currentClasses =  {
       'no-kids': !this.hasKids,
       'has-kids': this.hasKids,
       'closed': this.closedComment
     };
+    this.saveHistory();
   }
 
-  constructor(private dataService: DataService) { }
-
-  ngOnInit() {
-    this.hasKids = (this.comment.kids && this.comment.kids.length > 0) ? true : false;
-    this.setCurrentClasses();
+  saveHistory() {
+    this.comment.closed = this.closedComment;
   }
 
   onClick(event) {
     if(this.hasKids) {
       if(this.closedComment) {
-        if(!this.fetchedKids) {
+        if(!this.fetchedKids && !this.comment.children) {
           this.getChildComments();
         }
-        this.closedComment = false;
+        this.openComment();
       } else {
-        this.closedComment = true;
+        this.closeComment();
       }
     }
     this.setCurrentClasses();
@@ -50,5 +56,13 @@ export class CommentComponent implements OnInit {
       this.comment.children = items;
       this.fetchedKids = true;
     });
+  }
+
+  closeComment() {
+    this.closedComment = true;
+  }
+
+  openComment() {
+    this.closedComment = false;
   }
 }
