@@ -1,6 +1,7 @@
 <div *ngIf="story">
   <div>
-    <div class="title">{{ story.title }}</div>
+    <div *ngIf="story.url; else elseTitle" class="title"><a href="{{story.url}}">{{ story.title }}</a></div>
+    <ng-template #elseTitle><div class="title">{{ story.title }}</div></ng-template>
     <div class="author">{{ story.by }}</div>
     <div class="description" innerHTML="{{ story.text }}"></div>
   </div>
