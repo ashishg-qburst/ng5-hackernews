@@ -17,6 +17,7 @@ export class CommentComponent implements OnInit {
   currentClasses: {};
   setCurrentClasses() {
     this.currentClasses =  {
+      'no-kids': !this.hasKids,
       'has-kids': this.hasKids,
       'closed': this.closedComment
     };

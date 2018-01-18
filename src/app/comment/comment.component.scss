@@ -4,10 +4,14 @@
 }
 
 .comment {
-  padding-top: 10px;
-  padding-bottom: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.comment.no-kids {
+  cursor: auto;
 }
 
 .comment.has-kids:hover {
