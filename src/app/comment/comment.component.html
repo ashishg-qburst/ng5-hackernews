@@ -1,7 +1,7 @@
-<div class="comment" [class.has-kids]="comment.kids">
+<div class="comment" [ngClass]="currentClasses">
   <div innerHTML="{{ comment.text }}" class="text"></div>
   <div class="author">{{ comment.by }}</div>
-  <div *ngIf="comment.children">
+  <div *ngIf="comment.children && !closedComment">
     <div *ngFor="let kidComment of comment.children">
       <app-comment [comment]="kidComment"></app-comment>
     </div>

@@ -10,16 +10,12 @@
   padding-right: 15px;
 }
 
-.comment .comment {
-  margin-left: 10px;
-}
-
 .comment.has-kids:hover {
-  background: #ddd;
   border-left: 1px solid #ff6600;
   padding-left: 14px;
+  cursor: pointer;
 }
 
-.comment.has-kids {
-  cursor: pointer;
+.comment.has-kids.closed:hover {
+  background: #ddd;
 }
