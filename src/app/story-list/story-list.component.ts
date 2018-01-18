@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service'
+import { DataService } from '../data.service';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-story-list',
@@ -8,7 +9,18 @@ import { DataService } from '../data.service'
 })
 export class StoryListComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private dataService: DataService) {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = () => { return false; }
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
+        window.scrollTo(0, 0);
+      }
+    });
+  }
 
   stories = [];
   selectedStory;
@@ -18,8 +30,12 @@ export class StoryListComponent implements OnInit {
   }
 
   getStories() {
+    const params = this.route.snapshot.paramMap;
+    const category = params.get('category');
+    const page = +params.get('page');
     let topTen = [];
-    this.dataService.getTopStories().subscribe(stories => {
+
+    this.dataService.getStories(category, page).subscribe(stories => {
       this.dataService
           .getItems(stories)
           .subscribe(items => this.stories = items);

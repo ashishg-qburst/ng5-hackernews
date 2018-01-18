@@ -14,13 +14,19 @@ const httpOptions = {
 
 const HN_BASE_URL = 'https://hacker-news.firebaseio.com/v0'
 
+const CATEGORY_MAP = {
+  'top': 'topstories',
+  'new': 'newstories',
+  'best': 'beststories'
+}
+
 @Injectable()
 export class DataService {
 
   constructor(private _http: HttpClient) { }
 
-  getTopStories() {
-    let top$ = this._http.get<string[]>(`${HN_BASE_URL}/topstories.json`);
+  getStories(category = 'top', page = 1) {
+    let top$ = this._http.get<string[]>(`${HN_BASE_URL}/${CATEGORY_MAP[category]}.json`);
     return top$.map(stories => stories.slice(0, 9));
   }
 

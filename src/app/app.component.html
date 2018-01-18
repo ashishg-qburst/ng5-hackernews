@@ -1,5 +1,13 @@
 <div class="container">
-  <div class="row"><span class="header">{{ title }}</span></div>
+  <div class="row">
+    <div class="col-md-4">
+      <span class="header">{{ title }}</span>
+    </div>
+    <div class="pull-right">
+      <div [routerLinkActive]="['btn-success']" routerLink="/top" class="btn btn-sm">Top</div>
+      <div [routerLinkActive]="['btn-success']" routerLink="/new" class="btn btn-sm">New</div>
+    </div>
+  </div>
   <div class="row">
     <router-outlet></router-outlet>
   </div>
