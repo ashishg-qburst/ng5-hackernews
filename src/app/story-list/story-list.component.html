@@ -10,3 +10,10 @@
     </div>
   </li>
 </ul>
+
+<div class="row">
+  <div class="col-xs-4 footer-nav-action-container">
+    <div *ngIf="prevPageAvailable" [routerLink]="['/', category, (page - 1)]" class="nav-btn btn btn-sm">Prev</div>
+    <div *ngIf="nextPageAvailable" [routerLink]="['/', category, (page + 1)]" class="nav-btn btn btn-sm">Next</div>
+  </div>
+</div>

@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
+import { min, max } from 'lodash'
+
+const PAGE_RANGE = {
+  'min': 1,
+  'max': 5
+}
+
 @Component({
   selector: 'app-story-list',
   templateUrl: './story-list.component.html',
@@ -12,7 +19,6 @@ export class StoryListComponent implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private dataService: DataService) {
-
     this.router.routeReuseStrategy.shouldReuseRoute = () => { return false; }
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
@@ -22,23 +28,26 @@ export class StoryListComponent implements OnInit {
     });
   }
 
+  page;
+  category;
   stories = [];
   selectedStory;
+  prevPageAvailable: boolean = false;
+  nextPageAvailable: boolean = false;
 
   ngOnInit() {
+    const params = this.route.snapshot.paramMap;
+    this.category = params.get('category');
+    this.page = max([+params.get('page'), 1]);
+    this.prevPageAvailable = (this.page - PAGE_RANGE['min']) > 0;
+    this.nextPageAvailable = (PAGE_RANGE['max'] - this.page) > 0;
     this.getStories();
   }
 
   getStories() {
-    const params = this.route.snapshot.paramMap;
-    const category = params.get('category');
-    const page = +params.get('page');
     let topTen = [];
-
-    this.dataService.getStories(category, page).subscribe(stories => {
-      this.dataService
-          .getItems(stories)
-          .subscribe(items => this.stories = items);
+    this.dataService.getStories(this.category, this.page).subscribe(stories => {
+      this.dataService.getItems(stories).subscribe(items => this.stories = items);
     });
   }
 
