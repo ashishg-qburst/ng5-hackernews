@@ -11,8 +11,7 @@ export class StoryComponent implements OnInit {
 
   story;
 
-  constructor(private dataService: DataService,
-              private route: ActivatedRoute) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getStory();

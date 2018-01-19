@@ -2,3 +2,17 @@
   font-size: 18px;
   font-weight: 700;
 }
+
+.nav-btn {
+  border-radius: 0px;
+}
+
+.nav-btn:hover {
+  border-color: #ff6600;
+}
+
+.nav-btn-active {
+  color: #fff;
+  background-color: #ff6600;
+  border-color: #ff6600;
+}
