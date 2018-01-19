@@ -38,10 +38,14 @@ export class DataService {
 
   getItemWithDescendants(id) {
     return this.getItem(id).mergeMap(item => {
-      return this.getItems(item.kids).map(kids => {
-        item.children = kids;
-        return item;
-      });
+      if(item.kids && item.kids.length > 0) {
+        return this.getItems(item.kids).map(kids => {
+          item.children = kids;
+          return item;
+        });
+      } else {
+        return Observable.of(item);
+      }
     });
   }
 
