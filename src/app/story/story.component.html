@@ -6,9 +6,14 @@
     <div class="description" innerHTML="{{ story.text }}"></div>
   </div>
 
-  <div *ngIf="story.children">
+  <div *ngIf="story.children; else noComments">
     <div *ngFor="let comment of story.children">
       <app-comment [comment]="comment"></app-comment>
     </div>
   </div>
+  <ng-template #noComments>
+    <div>
+      <span class="text-muted">No comments yet.</span>
+    </div>
+  </ng-template>
 </div>
