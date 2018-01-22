@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { NgHttpLoaderModule } from 'ng-http-loader/ng-http-loader.module';
 
 import { DataService } from './data.service'
 
@@ -21,7 +22,8 @@ import { CommentComponent } from './comment/comment.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgHttpLoaderModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
